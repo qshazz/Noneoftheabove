@@ -1,9 +1,9 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
 
 local Window = redzlib:MakeWindow({
-  Title = "redz Hub : Blox Fruits",
-  SubTitle = "by redz9999",
-  SaveFolder = "testando | redz lib v5.lua"
+    Title = "redz Hub : Blox Fruits",
+    SubTitle = "by redz9999",
+    SaveFolder = "testando | redz lib v5.lua"
 })
 
 Window:AddMinimizeButton({
@@ -26,70 +26,68 @@ local Section = Tab1:AddSection({"Section"})
 
 local Paragraph = Tab1:AddParagraph({"Paragraph", "This is a Paragraph\nSecond Line"})
 
---  local Dialog = Window:Dialog({
---    Title = "Dialog",
---    Text = "This is a Dialog",
---    Options = {
---      {"Confirm", function()
---        
---      end},
---      {"Maybe", function()
---        
---      end},
---      {"Cancel", function()
---        
---      end}
---    }
---  })
-  
-Tab1:AddButton({"Print", function(Value)
-print("Hello World!")
-end})
+-- Uncomment if you want to use the dialog
+--[[
+local Dialog = Window:Dialog({
+    Title = "Dialog",
+    Text = "This is a Dialog",
+    Options = {
+        {"Confirm", function()
+            print("Confirmed")
+        end},
+        {"Maybe", function()
+            print("Maybe")
+        end},
+        {"Cancel", function()
+            print("Cancelled")
+        end}
+    }
+})
+]]
+
+Tab1:AddButton({
+    Name = "Print", 
+    Callback = function()
+        print("Hello World!")
+    end
+})
 
 local Toggle1 = Tab1:AddToggle({
-  Name = "Toggle",
-  Description = "This is a <font color='rgb(88, 101, 242)'>Toggle</font> Example",
-  Default = false 
-})
-Toggle1:Callback(function(Value)
- 
-end)
-
-Tab1:AddToggle({
     Name = "Toggle",
+    Description = "This is a <font color='rgb(88, 101, 242)'>Toggle</font> Example",
     Default = false,
-    Callback = function(v)
-
+    Callback = function(Value)
+        print("Toggle state:", Value)
     end
 })
 
 Tab1:AddSlider({
-  Name = "Speed",
-  Min = 1,
-  Max = 100,
-  Increase = 1,
-  Default = 16,
-  Callback = function(Value)
-  
-  end
+    Name = "Speed",
+    Min = 1,
+    Max = 100,
+    Increase = 1,
+    Default = 16,
+    Callback = function(Value)
+        print("Speed set to:", Value)
+    end
 })
 
 local Dropdown = Tab1:AddDropdown({
-  Name = "Players List",
-  Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
-  Options = {"one", "two", "three"},
-  Default = "two",
-  Flag = "dropdown teste",
-  Callback = function(Value)
-    
-  end
+    Name = "Players List",
+    Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
+    Options = {"one", "two", "three"},
+    Default = "two",
+    Flag = "dropdown teste",
+    Callback = function(Value)
+        print("Selected:", Value)
+    end
 })
 
 Tab1:AddTextBox({
-  Name = "Name item",
-  Description = "1 Item on 1 Server", 
-  PlaceholderText = "item only",
-  Callback = function(Value)
-    
-  end
+    Name = "Name item",
+    Description = "1 Item on 1 Server", 
+    PlaceholderText = "item only",
+    Callback = function(Value)
+        print("Text entered:", Value)
+    end
 })
