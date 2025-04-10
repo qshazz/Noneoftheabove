@@ -1,58 +1,73 @@
-local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
+-- Load the Redz Hub UI Library
+local RedzHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
 
-OrionLib:MakeNotification({
-	Name = "ShazGUI",
-	Content = "UI Loaded Successfully!",
-	Time = 5
+-- Create the main window
+local Window = RedzHub:CreateWindow({
+    Name = "Redz Hub Example",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "RedzHubConfig"
 })
 
--- Main Window
-local Window = OrionLib:MakeWindow({
-	Name = "ShazGUI",
-	HidePremium = false,
-	SaveConfig = true,
-	ConfigFolder = "sShazGUI"
+-- Create a tab
+local Tab1 = Window:CreateTab({
+    Name = "Main Tab",
+    Icon = "rbxassetid://4483345998"
 })
 
--- Player Tab
-local PlayerTab = Window:MakeTab({
-	Name = "Player",
-	PremiumOnly = false
+-- Add a section to the tab
+local Section1 = Tab1:AddSection({
+    Name = "Main Section"
 })
 
-local PlayerSection = PlayerTab:AddSection({
-	Name = "Player Settings"
+-- Add a button to the section
+Section1:AddButton({
+    Name = "Print Message",
+    Callback = function()
+        print("Hello from Redz Hub!")
+    end
 })
 
-PlayerSection:AddSlider({
-	Name = "Walkspeed",
-	Min = 16,
-	Max = 100,
-	Default = 16,
-	Color = Color3.fromRGB(255, 255, 255),
-	Increment = 1,
-	ValueName = "Speed",
-	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-	end    
+-- Add a toggle to the section
+local Toggle1 = Section1:AddToggle({
+    Name = "Toggle Example",
+    Description = "This is a toggle example",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            print("Toggle is ON")
+        else
+            print("Toggle is OFF")
+        end
+    end
 })
 
--- Settings Tab
-local SettingsTab = Window:MakeTab({
-	Name = "Setting",
-	PremiumOnly = false
+-- Add a slider to the section
+Section1:AddSlider({
+    Name = "Speed",
+    Min = 1,
+    Max = 100,
+    Default = 16,
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
 })
 
-local SettingsSection = SettingsTab:AddSection({
-	Name = "UI Settings"
+-- Add a dropdown to the section
+Section1:AddDropdown({
+    Name = "Select Option",
+    Options = {"Option 1", "Option 2", "Option 3"},
+    Default = "Option 1",
+    Callback = function(Value)
+        print("Selected:", Value)
+    end
 })
 
-SettingsSection:AddButton({
-	Name = "Destroy UI",
-	Callback = function()
-		OrionLib:Destroy()
-	end    
+-- Add a textbox to the section
+Section1:AddTextBox({
+    Name = "Input Text",
+    PlaceholderText = "Type here...",
+    Callback = function(Value)
+        print("Input:", Value)
+    end
 })
-
--- Init UI
-OrionLib:Init()
