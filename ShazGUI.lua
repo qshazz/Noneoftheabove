@@ -11,6 +11,10 @@ Window:AddMinimizeButton({
     Corner = { CornerRadius = UDim.new(35, 1) },
 })
 
+local Tab1 = Window:MakeTab({"Um", "cherry"})
+redzlib:SetTheme("Dark")
+Window:SelectTab(Tab1)
+
 Tab1:AddDiscordInvite({
     Name = "Name Hub",
     Description = "Join server",
@@ -18,29 +22,25 @@ Tab1:AddDiscordInvite({
     Invite = "Link discord invite",
 })
 
-local Tab1 = Window:MakeTab({"Um", "cherry"})
-redzlib:SetTheme("Dark")
-Window:SelectTab(Tab1)
-
 local Section = Tab1:AddSection({"Section"})
 
 local Paragraph = Tab1:AddParagraph({"Paragraph", "This is a Paragraph\nSecond Line"})
 
-  local Dialog = Window:Dialog({
-    Title = "Dialog",
-    Text = "This is a Dialog",
-    Options = {
-      {"Confirm", function()
-        
-      end},
-      {"Maybe", function()
-        
-      end},
-      {"Cancel", function()
-        
-      end}
-    }
-  })
+--  local Dialog = Window:Dialog({
+--    Title = "Dialog",
+--    Text = "This is a Dialog",
+--    Options = {
+--      {"Confirm", function()
+--        
+--      end},
+--      {"Maybe", function()
+--        
+--      end},
+--      {"Cancel", function()
+--        
+--      end}
+--    }
+--  })
   
 Tab1:AddButton({"Print", function(Value)
 print("Hello World!")
