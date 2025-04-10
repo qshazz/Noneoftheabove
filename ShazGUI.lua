@@ -1,73 +1,106 @@
 -- Load the Redz Hub UI Library
-local RedzHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
 
--- Create the main window
-local Window = RedzHub:CreateWindow({
-    Name = "Redz Hub Example",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "RedzHubConfig"
+-- Create main window
+local Window = redzlib:MakeWindow({
+    Title = "redz Hub : Blox Fruits",
+    SubTitle = "by redz9999",
+    SaveFolder = "RedzHubConfig"
 })
 
--- Create a tab
-local Tab1 = Window:CreateTab({
+-- Add minimize button (optional styling)
+Window:AddMinimizeButton({
+    Button = { Image = "rbxassetid://71014873973869", BackgroundTransparency = 0 },
+    Corner = { CornerRadius = UDim.new(0.35, 1) },
+})
+
+-- Create tab
+local Tab1 = Window:MakeTab({
     Name = "Main Tab",
-    Icon = "rbxassetid://4483345998"
+    Icon = "cherry" -- You can use an image ID here instead of text if needed
 })
 
--- Add a section to the tab
-local Section1 = Tab1:AddSection({
-    Name = "Main Section"
+-- Discord Invite (optional)
+Tab1:AddDiscordInvite({
+    Name = "Name Hub",
+    Description = "Join server",
+    Logo = "rbxassetid://18751483361",
+    Invite = "YourDiscordInviteCodeHere" -- Just the invite code, not full URL
 })
 
--- Add a button to the section
-Section1:AddButton({
-    Name = "Print Message",
+-- Set theme and select tab
+redzlib:SetTheme("Dark")
+Window:SelectTab(Tab1)
+
+-- Add section
+local Section = Tab1:AddSection({
+    Name = "Main Features"
+})
+
+-- Add paragraph
+Tab1:AddParagraph({
+    Title = "Paragraph",
+    Content = "This is a Paragraph\nSecond Line"
+})
+
+-- Dialog popup
+Window:Dialog({
+    Title = "Dialog",
+    Text = "This is a Dialog",
+    Options = {
+        {"Confirm", function() print("Confirmed!") end},
+        {"Maybe", function() print("Maybe...") end},
+        {"Cancel", function() print("Canceled") end}
+    }
+})
+
+-- Button
+Tab1:AddButton({
+    Name = "Print",
     Callback = function()
-        print("Hello from Redz Hub!")
+        print("Hello World!")
     end
 })
 
--- Add a toggle to the section
-local Toggle1 = Section1:AddToggle({
-    Name = "Toggle Example",
-    Description = "This is a toggle example",
+-- Toggle with callback
+Tab1:AddToggle({
+    Name = "Toggle",
+    Description = "This is a <font color='rgb(88, 101, 242)'>Toggle</font> Example",
     Default = false,
     Callback = function(Value)
-        if Value then
-            print("Toggle is ON")
-        else
-            print("Toggle is OFF")
-        end
+        print("Toggle value:", Value)
     end
 })
 
--- Add a slider to the section
-Section1:AddSlider({
+-- Slider
+Tab1:AddSlider({
     Name = "Speed",
     Min = 1,
     Max = 100,
+    Increase = 1,
     Default = 16,
     Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+        print("Speed:", Value)
     end
 })
 
--- Add a dropdown to the section
-Section1:AddDropdown({
-    Name = "Select Option",
-    Options = {"Option 1", "Option 2", "Option 3"},
-    Default = "Option 1",
+-- Dropdown
+Tab1:AddDropdown({
+    Name = "Players List",
+    Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
+    Options = {"one", "two", "three"},
+    Default = "two",
     Callback = function(Value)
-        print("Selected:", Value)
+        print("Dropdown selected:", Value)
     end
 })
 
--- Add a textbox to the section
-Section1:AddTextBox({
-    Name = "Input Text",
-    PlaceholderText = "Type here...",
+-- Textbox
+Tab1:AddTextBox({
+    Name = "Name item",
+    Description = "1 Item on 1 Server",
+    PlaceholderText = "item only",
     Callback = function(Value)
-        print("Input:", Value)
+        print("Text input:", Value)
     end
 })
