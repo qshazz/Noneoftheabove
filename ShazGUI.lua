@@ -1,7 +1,7 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
 
 local Window = redzlib:MakeWindow({
-  Title = "ShazGUI",
+  Title = "ShazGUI V1",
   SubTitle = "By qshazz",
   SaveFolder = "ShazGUIC"
 })
@@ -24,7 +24,7 @@ Tab1:AddDiscordInvite({
 })
 
 --Buttons
-local Button1 = Tab1:AddButton({"Print", function()
+Tab1:AddButton({"Print", function()
 print("Hello World!")
 end})
 
@@ -34,7 +34,7 @@ local Toggle1 = Tab1:AddToggle({
   Default = false
 })
 
-Local Slider1 = Tab1:AddSlider({
+Tab1:AddSlider({
   Name = "Speed",
   Min = 1,
   Max = 100,
