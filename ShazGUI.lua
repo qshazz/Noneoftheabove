@@ -1,106 +1,95 @@
--- Load the Redz Hub UI Library
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
 
--- Create main window
 local Window = redzlib:MakeWindow({
-    Title = "redz Hub : Blox Fruits",
-    SubTitle = "by redz9999",
-    SaveFolder = "RedzHubConfig"
+  Title = "redz Hub : Blox Fruits",
+  SubTitle = "by redz9999",
+  SaveFolder = "testando | redz lib v5.lua"
 })
 
--- Add minimize button (optional styling)
 Window:AddMinimizeButton({
     Button = { Image = "rbxassetid://71014873973869", BackgroundTransparency = 0 },
-    Corner = { CornerRadius = UDim.new(0.35, 1) },
+    Corner = { CornerRadius = UDim.new(35, 1) },
 })
 
--- Create tab
-local Tab1 = Window:MakeTab({
-    Name = "Main Tab",
-    Icon = "cherry" -- You can use an image ID here instead of text if needed
-})
-
--- Set theme and select tab
-redzlib:SetTheme("Dark")
-Window:SelectTab(Tab1)
-
--- Discord Invite (optional)
 Tab1:AddDiscordInvite({
     Name = "Name Hub",
     Description = "Join server",
     Logo = "rbxassetid://18751483361",
-    Invite = "YourDiscordInviteCodeHere" -- Just the invite code, not full URL
+    Invite = "Link discord invite",
 })
 
--- Add section
-local Section = Tab1:AddSection({
-    Name = "Main Features"
-})
+local Tab1 = Window:MakeTab({"Um", "cherry"})
+redzlib:SetTheme("Dark")
+Window:SelectTab(Tab1)
 
--- Add paragraph
-Tab1:AddParagraph({
-    Title = "Paragraph",
-    Content = "This is a Paragraph\nSecond Line"
-})
+local Section = Tab1:AddSection({"Section"})
 
--- Dialog popup
-Window:Dialog({
+local Paragraph = Tab1:AddParagraph({"Paragraph", "This is a Paragraph\nSecond Line"})
+
+  local Dialog = Window:Dialog({
     Title = "Dialog",
     Text = "This is a Dialog",
     Options = {
-        {"Confirm", function() print("Confirmed!") end},
-        {"Maybe", function() print("Maybe...") end},
-        {"Cancel", function() print("Canceled") end}
+      {"Confirm", function()
+        
+      end},
+      {"Maybe", function()
+        
+      end},
+      {"Cancel", function()
+        
+      end}
     }
-})
+  })
+  
+Tab1:AddButton({"Print", function(Value)
+print("Hello World!")
+end})
 
--- Button
-Tab1:AddButton({
-    Name = "Print",
-    Callback = function()
-        print("Hello World!")
-    end
+local Toggle1 = Tab1:AddToggle({
+  Name = "Toggle",
+  Description = "This is a <font color='rgb(88, 101, 242)'>Toggle</font> Example",
+  Default = false 
 })
+Toggle1:Callback(function(Value)
+ 
+end)
 
--- Toggle with callback
 Tab1:AddToggle({
     Name = "Toggle",
-    Description = "This is a <font color='rgb(88, 101, 242)'>Toggle</font> Example",
     Default = false,
-    Callback = function(Value)
-        print("Toggle value:", Value)
+    Callback = function(v)
+
     end
 })
 
--- Slider
 Tab1:AddSlider({
-    Name = "Speed",
-    Min = 1,
-    Max = 100,
-    Increase = 1,
-    Default = 16,
-    Callback = function(Value)
-        print("Speed:", Value)
-    end
+  Name = "Speed",
+  Min = 1,
+  Max = 100,
+  Increase = 1,
+  Default = 16,
+  Callback = function(Value)
+  
+  end
 })
 
--- Dropdown
-Tab1:AddDropdown({
-    Name = "Players List",
-    Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
-    Options = {"one", "two", "three"},
-    Default = "two",
-    Callback = function(Value)
-        print("Dropdown selected:", Value)
-    end
+local Dropdown = Tab1:AddDropdown({
+  Name = "Players List",
+  Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
+  Options = {"one", "two", "three"},
+  Default = "two",
+  Flag = "dropdown teste",
+  Callback = function(Value)
+    
+  end
 })
 
--- Textbox
 Tab1:AddTextBox({
-    Name = "Name item",
-    Description = "1 Item on 1 Server",
-    PlaceholderText = "item only",
-    Callback = function(Value)
-        print("Text input:", Value)
-    end
+  Name = "Name item",
+  Description = "1 Item on 1 Server", 
+  PlaceholderText = "item only",
+  Callback = function(Value)
+    
+  end
 })
