@@ -20,6 +20,10 @@ local Tab1 = Window:MakeTab({
     Icon = "cherry" -- You can use an image ID here instead of text if needed
 })
 
+-- Set theme and select tab
+redzlib:SetTheme("Dark")
+Window:SelectTab(Tab1)
+
 -- Discord Invite (optional)
 Tab1:AddDiscordInvite({
     Name = "Name Hub",
@@ -27,10 +31,6 @@ Tab1:AddDiscordInvite({
     Logo = "rbxassetid://18751483361",
     Invite = "YourDiscordInviteCodeHere" -- Just the invite code, not full URL
 })
-
--- Set theme and select tab
-redzlib:SetTheme("Dark")
-Window:SelectTab(Tab1)
 
 -- Add section
 local Section = Tab1:AddSection({
