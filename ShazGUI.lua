@@ -3,7 +3,6 @@ local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qsha
 OrionLib:MakeNotification({
 	Name = "Orion Example",
 	Content = "UI Loaded Successfully!",
-	Image = "rbxassetid://4483345998",
 	Time = 5
 })
 
@@ -18,7 +17,6 @@ local Window = OrionLib:MakeWindow({
 -- Player Tab
 local PlayerTab = Window:MakeTab({
 	Name = "Player",
-	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
@@ -41,8 +39,7 @@ PlayerSection:AddSlider({
 
 -- Settings Tab
 local SettingsTab = Window:MakeTab({
-	Name = "Settings",
-	Icon = "rbxassetid://4483345998",
+	Name = "Setting",
 	PremiumOnly = false
 })
 
