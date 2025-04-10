@@ -1,48 +1,67 @@
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
+-- Load the Redz Hub UI Library
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/main/Redzhubui"))()
 
+-- Create main window
 local Window = redzlib:MakeWindow({
     Title = "redz Hub : Blox Fruits",
     SubTitle = "by redz9999",
-    SaveFolder = "redz hub bf"
+    SaveFolder = "RedzHubConfig"
 })
 
--- Fixed asset ID (shortened to a more realistic length)
+-- Add minimize button (optional styling)
 Window:AddMinimizeButton({
     Button = { Image = "rbxassetid://7101487387", BackgroundTransparency = 0 },
-    Corner = { CornerRadius = UDim.new(0, 35) }, -- Fixed CornerRadius format
+    Corner = { CornerRadius = UDim.new(0, 35) },
 })
 
-local Tab1 = Window:MakeTab({"Main", "cherry"}) -- Changed "Um" to "Main" for clarity
+-- Create tab
+local Tab1 = Window:MakeTab({
+    Name = "Main Tab",
+    Icon = "cherry" -- Using text icon
+})
+
+-- Set theme and select tab
 redzlib:SetTheme("Dark")
 Window:SelectTab(Tab1)
 
-local Section = Tab1:AddSection({"Main Section"}) -- Added a more descriptive section name
-
-Tab1:AddDiscordInvite({
-    Name = "Join Discord",
-    Description = "Join our server",
-    Logo = "rbxassetid://18751483361",
-    Invite = "discord.gg/yourserver", -- Replace with your actual invite
+-- Add section
+local Section = Tab1:AddSection({
+    Name = "Main Features"
 })
 
-local Paragraph = Tab1:AddParagraph({"Information", "This is a Paragraph\nSecond Line"})
+-- Add paragraph
+Tab1:AddParagraph({
+    Title = "Paragraph",
+    Content = "This is a Paragraph\nSecond Line"
+})
 
+-- Discord Invite (optional)
+Tab1:AddDiscordInvite({
+    Name = "Name Hub",
+    Description = "Join server",
+    Logo = "rbxassetid://18751483361",
+    Invite = "YourDiscordInviteCodeHere" -- Replace with your invite code
+})
+
+-- Button
 Tab1:AddButton({
-    Name = "Print Hello", 
+    Name = "Print",
     Callback = function()
         print("Hello World!")
     end
 })
 
+-- Toggle with callback
 local Toggle1 = Tab1:AddToggle({
-    Name = "Toggle Feature",
-    Description = "This is a <font color='rgb(88, 101, 242)'>Toggle</font> Example",
+    Name = "Toggle",
+    Description = "This is a Toggle Example",
     Default = false,
     Callback = function(Value)
-        print("Toggle state:", Value)
+        print("Toggle value:", Value)
     end
 })
 
+-- Slider
 Tab1:AddSlider({
     Name = "Speed",
     Min = 1,
@@ -50,45 +69,41 @@ Tab1:AddSlider({
     Increase = 1,
     Default = 16,
     Callback = function(Value)
-        print("Speed set to:", Value)
+        print("Speed:", Value)
     end
 })
 
-local Dropdown = Tab1:AddDropdown({
+-- Dropdown
+Tab1:AddDropdown({
     Name = "Players List",
-    Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
+    Description = "Select the Number",
     Options = {"one", "two", "three"},
     Default = "two",
-    Flag = "dropdown_test", -- Changed to use underscore instead of space
     Callback = function(Value)
-        print("Selected:", Value)
+        print("Dropdown selected:", Value)
     end
 })
 
+-- Textbox
 Tab1:AddTextBox({
-    Name = "Item Name",
-    Description = "1 Item on 1 Server", 
-    PlaceholderText = "Enter item name",
+    Name = "Name item",
+    Description = "1 Item on 1 Server",
+    PlaceholderText = "item only",
     Callback = function(Value)
-        print("Text entered:", Value)
+        print("Text input:", Value)
     end
 })
 
--- If you want to use the dialog, uncomment this:
+-- Dialog popup (moved after all elements to prevent early triggering)
+-- Uncomment if you want to show a dialog
 --[[
-local Dialog = Window:Dialog({
+Window:Dialog({
     Title = "Dialog",
     Text = "This is a Dialog",
     Options = {
-        {"Confirm", function()
-            print("Confirmed")
-        end},
-        {"Maybe", function()
-            print("Maybe")
-        end},
-        {"Cancel", function()
-            print("Cancelled")
-        end}
+        {"Confirm", function() print("Confirmed!") end},
+        {"Maybe", function() print("Maybe...") end},
+        {"Cancel", function() print("Canceled") end}
     }
 })
 ]]
