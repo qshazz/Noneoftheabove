@@ -1,5 +1,7 @@
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
+
 OrionLib:MakeNotification({
-	Name = "ShazGUI",
+	Name = "Orion Example",
 	Content = "UI Loaded Successfully!",
 	Image = "rbxassetid://4483345998",
 	Time = 5
@@ -7,7 +9,7 @@ OrionLib:MakeNotification({
 
 -- Main Window
 local Window = OrionLib:MakeWindow({
-	Name = "ShazGUI",
+	Name = "Orion Example",
 	HidePremium = false,
 	SaveConfig = true,
 	ConfigFolder = "OrionExample"
