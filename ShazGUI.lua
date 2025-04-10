@@ -1,7 +1,7 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/qshazz/Noneoftheabove/main/Source.lua"))()
 
 local Window = redzlib:MakeWindow({
-  Title = "ShazGUI V1",
+  Title = "ShazGUI V1.0",
   SubTitle = "By qshazz",
   SaveFolder = "ShazGUIC"
 })
@@ -20,7 +20,7 @@ Tab1:AddDiscordInvite({
   Name = "ShazGUI Hub",
   Description = "Join Discord",
   Logo = "rbxassetid://18751483361",
-  Invite = "YourDiscordInviteCodeHere" -- Just the invite code, not full URL
+  Invite = "Nigger" -- Just the invite code, not full URL
 })
 
 --Buttons
@@ -29,8 +29,8 @@ print("Hello World!")
 end})
 
 local Toggle1 = Tab1:AddToggle({
-  Name = "Speed",
-  Description = "Idk",
+  Name = "No Clip",
+  Description = "Pass Through Walls",
   Default = false
 })
 
